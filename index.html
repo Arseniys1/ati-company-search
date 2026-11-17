@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATI — поиск компаний в логах запросов</title>
+<meta name="description" content="Поиск компаний и грузов по логам запросов ATI">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">ATI</span>
+    <span class="brand-text">поиск по логам запросов</span>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<div class="searchbar">
+  <div class="field">
+    <input id="q" type="search" autocomplete="off" spellcheck="false"
+           placeholder="Компания, город, телефон, e-mail, груз или маршрут">
+    <button id="clear" class="clear" title="Очистить" hidden>×</button>
+  </div>
+</div>
+
+<nav class="tabs">
+  <button class="tab active" data-tab="companies">Компании</button>
+  <button class="tab" data-tab="loads">Грузы</button>
+  <span class="tab-note" id="tab-note"></span>
+</nav>
+
+<main>
+  <section class="results-col">
+    <div class="result-head">
+      <span id="result-count"></span>
+      <span id="result-hint" class="hint"></span>
+    </div>
+    <div id="results" class="results"></div>
+    <div id="more" class="more" hidden><button id="more-btn">Показать ещё</button></div>
+  </section>
+
+  <aside id="detail" class="detail-col">
+    <div class="empty-detail">
+      <p>Выберите компанию или груз слева.</p>
+      <p class="muted">Поиск работает по 27 692 компаниям и 196 110 грузам из логов запросов ATI.</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="foot">
+  <span id="period"></span>
+  <span class="muted">Данные: логи запросов ATI. Аккаунты пользователей сервиса не публикуются.</span>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
