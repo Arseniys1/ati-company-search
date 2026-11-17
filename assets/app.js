@@ -175,6 +175,8 @@ function renderStats() {
   const meta = state.meta || {};
   el.stats.textContent = `${nf.format(meta.companies || 0)} компаний · ${nf.format(meta.loads || 0)} грузов`;
   el.period.textContent = meta.from ? `Период логов: ${date(meta.from)} — ${date(meta.to)}` : '';
+  document.getElementById('intro-stats').textContent =
+    `Поиск работает по ${nf.format(meta.companies || 0)} компаниям и ${nf.format(meta.loads || 0)} грузам из логов запросов ATI.`;
 }
 
 function renderCompanyItem(index) {
