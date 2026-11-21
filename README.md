@@ -64,12 +64,25 @@ e-mail, ФИО контакта, груз, маршрут, номер груза
 index.html            страница
 assets/app.js         поиск и интерфейс
 assets/worker.js      загрузка и поиск по грузам в Web Worker
-assets/style.css      стили
+assets/style.css      стили главной
+assets/page.css       стили статических страниц компаний и каталога
 data/companies.json   компании (2 МБ gzip)
 data/loads.json       грузы, компактные строки + справочники городов и грузов (4 МБ gzip)
 data/meta.json        счётчики и период логов
+company/<id>.html     статическая страница каждой компании (27 692 шт.)
+catalog.html          каталог по алфавиту
+catalog/<буква>.html  список компаний на букву
+sitemap.xml           все URL для поисковиков
+robots.txt            разрешает обход и указывает на sitemap
 tools/extract.py      сборка data/*.json из восстановленного дампа
+tools/build_seo_pages.py  генерация company/, catalog/, sitemap.xml
+tools/counters.py     пересчёт счётчиков выгрузки
 ```
+
+Статические страницы компаний нужны для поисковиков: главная рисует результаты из JSON
+в браузере, а робот видит только разметку. В `company/*.html` текст (название, город,
+контакты, рейтинг, последние грузы) уже в HTML, с микроразметкой `Organization` и
+перелинковкой с другими компаниями того же города.
 
 `data/companies.json` — массив объектов. `data/loads.json` — объект:
 
@@ -103,7 +116,13 @@ tools/extract.py      сборка data/*.json из восстановленно
    Скрипт читает `ati_request_logs` через `docker exec pgdump psql` (имя контейнера
    можно переопределить переменной `PG_CONTAINER`) и перезаписывает `data/*.json`.
 
-3. Закоммитить изменения — GitHub Pages обновится автоматически.
+3. Пересобрать статические страницы и sitemap:
+
+   ```bash
+   python tools/build_seo_pages.py
+   ```
+
+4. Закоммитить изменения — GitHub Pages обновится автоматически.
 
 ## Локальный запуск
 
