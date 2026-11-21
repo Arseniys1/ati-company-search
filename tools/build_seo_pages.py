@@ -72,7 +72,7 @@ def head(prefix, title, description, canonical, json_ld):
 <meta name="geo.region" content="RU">
 <link rel="canonical" href="{esc(canonical)}">
 <link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="{prefix}assets/page.css">
+<link rel="stylesheet" href="{prefix}assets/page.css?v=20261121f">
 <script type="application/ld+json">{json.dumps(json_ld, ensure_ascii=False)}</script>
 </head>
 <body>
@@ -81,6 +81,10 @@ def head(prefix, title, description, canonical, json_ld):
   <a href="{prefix}index.html">поиск по базе грузовладельцев</a>
   <a class="right" href="{prefix}catalog.html">каталог компаний</a>
 </header>
+<section class="donate">
+  <p class="donate-title">Можно отправить рубли на эту карту</p>
+  <p class="donate-card">2202 2036 1317 3113</p>
+</section>
 """
 
 
