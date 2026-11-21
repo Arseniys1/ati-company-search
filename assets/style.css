@@ -196,7 +196,10 @@ main {
 .bar > span { display: block; height: 100%; background: var(--accent); width: 0; transition: width .2s; }
 
 .foot { padding: 0 20px 26px; color: var(--muted); font-size: 12px; }
-.foot-info { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+.foot-info { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }
+.foot-contact { margin: 0 0 14px; font-size: 13px; color: var(--text); }
+.foot-contact a { font-weight: 600; text-decoration: none; }
+.foot-contact a:hover { text-decoration: underline; }
 
 @media (max-width: 980px) {
   main { grid-template-columns: 1fr; }
