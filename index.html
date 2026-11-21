@@ -3,20 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ATI — поиск компаний в логах запросов</title>
-<meta name="description" content="Поиск компаний и грузов по логам запросов ATI">
+<title>Поиск грузовладельцев ATI — база компаний и грузов с ati.su</title>
+<meta name="description" content="Бесплатный поиск по базе грузовладельцев с сайта ati.su: 27 692 компании, 196 148 грузов, телефоны, e-mail, контакты, маршруты и ставки. Период сбора данных: 24.04.2026 — 11.11.2026.">
+<meta name="keywords" content="грузовладельцы, база грузовладельцев, поиск грузовладельцев, ati.su, ati, грузы, перевозки, логистика, контакты грузовладельцев, телефоны грузовладельцев">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="geo.region" content="RU">
+<meta name="geo.placename" content="Россия">
+<meta name="theme-color" content="#2f6fed">
+<link rel="canonical" href="https://arseniys1.github.io/ati-company-search/">
+<link rel="alternate" hreflang="ru" href="https://arseniys1.github.io/ati-company-search/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ATI — поиск грузовладельцев">
+<meta property="og:title" content="Поиск грузовладельцев ATI — база компаний и грузов с ati.su">
+<meta property="og:description" content="27 692 компании и 196 148 грузов: телефоны, e-mail, контакты, маршруты и ставки. Период сбора данных: 24.04.2026 — 11.11.2026.">
+<meta property="og:url" content="https://arseniys1.github.io/ati-company-search/">
+<meta property="og:image" content="https://arseniys1.github.io/ati-company-search/docs/preview.png">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://arseniys1.github.io/ati-company-search/#website",
+      "url": "https://arseniys1.github.io/ati-company-search/",
+      "name": "ATI — поиск грузовладельцев",
+      "alternateName": "База грузовладельцев ati.su",
+      "description": "Бесплатный поиск компаний-грузовладельцев по базе, собранной с сайта ati.su",
+      "inLanguage": "ru-RU"
+    },
+    {
+      "@type": "Dataset",
+      "name": "База грузовладельцев ati.su",
+      "description": "27 692 компании и 196 148 грузов, собранные с сайта ati.su: контакты, телефоны, e-mail, маршруты и ставки. Период сбора данных: 24.04.2026 — 11.11.2026.",
+      "url": "https://arseniys1.github.io/ati-company-search/",
+      "inLanguage": "ru-RU",
+      "isAccessibleForFree": true,
+      "temporalCoverage": "2026-04-24/2026-11-11",
+      "spatialCoverage": { "@type": "Country", "name": "Россия" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <header class="topbar">
   <div class="brand">
     <span class="logo">ATI</span>
-    <span class="brand-text">поиск по логам запросов</span>
+    <span class="brand-text">поиск грузовладельцев</span>
   </div>
   <div class="stats" id="stats"></div>
 </header>
+
+<section class="hero">
+  <h1>Бесплатный поиск грузовладельцев по базе ati.su</h1>
+  <p class="hero-meta">
+    <strong>Период сбора данных: 24.04.2026 — 11.11.2026.</strong>
+    База собрана с сайта ati.su по грузовладельцам: название компании, город, контакты,
+    рейтинг, грузы и маршруты.
+  </p>
+</section>
 
 <div class="searchbar">
   <div class="field">
@@ -51,8 +102,20 @@
 </main>
 
 <footer class="foot">
-  <span id="period"></span>
-  <span class="muted">Данные: логи запросов ATI. Аккаунты пользователей сервиса не публикуются.</span>
+  <div class="foot-info">
+    <span id="period"></span>
+    <span class="muted">Источник данных: ati.su. Аккаунты пользователей сервиса не публикуются.</span>
+  </div>
+
+  <section class="donate">
+    <img src="assets/qr.png" width="132" height="132"
+         alt="QR-код с номером карты 2202 2036 1317 3113 для перевода рублей">
+    <div class="donate-text">
+      <p class="donate-title">Кому не жалко — могут скинуть рубли на эту карту</p>
+      <p class="donate-card">2202 2036 1317 3113</p>
+      <p class="muted small">QR-код содержит номер карты: отсканируйте его в приложении банка.</p>
+    </div>
+  </section>
 </footer>
 
 <script src="assets/app.js"></script>
