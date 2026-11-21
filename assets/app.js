@@ -55,7 +55,7 @@ function digits(value) {
 function tokensOf(query) {
   return norm(query).split(' ').filter(Boolean).map(token => {
     const num = digits(token);
-    return num && num !== token ? [token, num] : [token];
+    return num && num !== token && !/\p{L}/u.test(token) ? [token, num] : [token];
   });
 }
 
@@ -219,7 +219,7 @@ function renderCompanies() {
   const shown = Math.min(state.companyOffset + PAGE, total);
   el.count.textContent = total ? `Найдено: ${nf.format(total)}` : '';
   el.hint.textContent = state.q ? '' : 'показаны компании с наибольшим числом грузов';
-  el.results.innerHTML = state.matches.slice(state.companyOffset, shown).map(renderCompanyItem).join('') ||
+  el.results.innerHTML = state.matches.slice(0, shown).map(renderCompanyItem).join('') ||
     '<div class="loading">Ничего не найдено</div>';
   el.more.hidden = shown >= total;
 }
