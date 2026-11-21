@@ -10,6 +10,8 @@ const state = {
   companyHay: [],
   companyName: [],
   companyLoads: [],
+  companyIds: [],
+  companyById: new Map(),
   matches: [],
   companyOffset: 0,
   loadOffset: 0,
@@ -88,6 +90,8 @@ function prepareCompanies(list) {
   state.companyHay = new Array(list.length);
   state.companyName = new Array(list.length);
   state.companyLoads = new Array(list.length);
+  state.companyIds = new Array(list.length);
+  state.companyById = new Map();
   for (let i = 0; i < list.length; i++) {
     const c = list[i];
     const parts = [c.name, c.short, c.city, c.region, c.country, c.kind, c.id];
@@ -98,6 +102,8 @@ function prepareCompanies(list) {
     state.companyHay[i] = norm(parts.filter(Boolean).join(' '));
     state.companyName[i] = norm(c.name || c.short || '');
     state.companyLoads[i] = c.loads || 0;
+    state.companyIds[i] = String(c.id || '');
+    state.companyById.set(String(c.id || ''), i);
   }
 }
 
@@ -117,6 +123,7 @@ function searchCompanies(tokens) {
   }
   const prefix = norm(state.q);
   const rank = index => {
+    if (state.companyIds[index] === prefix) return -1;
     const name = state.companyName[index];
     if (name.startsWith(prefix)) return 0;
     if (name.includes(prefix)) return 1;
@@ -152,8 +159,16 @@ function startWorker() {
     type: 'init',
     url: new URL('data/loads.json', location.href).href,
     names: state.companies.map(c => c.name || c.short || ''),
+    ids: state.companyIds,
   });
   state.worker = worker;
+}
+
+function exactCompanyOf(query) {
+  const value = norm(query);
+  if (!/^\d+$/.test(value)) return -1;
+  const index = state.companyById.get(value);
+  return index === undefined ? -1 : index;
 }
 
 function askLoads(offset) {
@@ -164,6 +179,7 @@ function askLoads(offset) {
     reqId: state.reqId,
     tokens: tokensOf(state.q),
     company: state.companyFilter,
+    exactCompany: exactCompanyOf(state.q),
     limit: PAGE,
     offset,
   });

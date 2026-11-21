@@ -1,6 +1,7 @@
 'use strict';
 
 let names = [];
+let ids = [];
 let cities = [];
 let cargos = [];
 let rows = [];
@@ -23,6 +24,7 @@ function buildIndex() {
     const row = rows[i];
     hay[i] = norm([
       names[row[0]],
+      ids[row[0]],
       cities[row[1]],
       cities[row[2]],
       cargos[row[4]],
@@ -55,12 +57,14 @@ function toItem(row, index) {
 function search(msg) {
   const tokens = msg.tokens || [];
   const company = msg.company;
+  const exact = msg.exactCompany == null ? -1 : msg.exactCompany;
   const picked = [];
   let total = 0;
   for (let i = 0; i < rows.length; i++) {
     const row = rows[i];
     if (company >= 0 && row[0] !== company) continue;
-    if (tokens.length) {
+    if (exact >= 0 && row[0] !== exact) continue;
+    if (tokens.length && exact < 0) {
       const text = hay[i];
       let ok = true;
       for (const forms of tokens) {
@@ -112,6 +116,7 @@ self.onmessage = async event => {
   const msg = event.data;
   if (msg.type === 'init') {
     names = msg.names;
+    ids = msg.ids || [];
     try {
       await loadData(msg.url);
     } catch (error) {
