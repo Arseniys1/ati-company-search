@@ -72,7 +72,7 @@ def head(prefix, title, description, canonical, json_ld):
 <meta name="geo.region" content="RU">
 <link rel="canonical" href="{esc(canonical)}">
 <link rel="icon" href="{prefix}assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="{prefix}assets/page.css?v=20261121f">
+<link rel="stylesheet" href="{prefix}assets/page.css?v=20261122a">
 <script type="application/ld+json">{json.dumps(json_ld, ensure_ascii=False)}</script>
 </head>
 <body>
@@ -83,7 +83,8 @@ def head(prefix, title, description, canonical, json_ld):
 </header>
 <section class="donate">
   <p class="donate-title">Можно отправить рубли на эту карту</p>
-  <p class="donate-card">2202 2036 1317 3113</p>
+  <p class="donate-card">5599 0020 9573 5322</p>
+  <p class="donate-sbp">или по номеру СБП: <span class="donate-card">79824532094</span></p>
 </section>
 """
 
